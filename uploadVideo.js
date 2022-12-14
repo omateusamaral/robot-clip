@@ -6,7 +6,6 @@ const OAuth2Data = require("./client_secret.json");
 const EventEmitter = require("events");
 
 const tags = require("./tags.json");
-const { setTimeout } = require("timers/promises");
 
 const rl = readline.createInterface({
   input: process.stdin,
