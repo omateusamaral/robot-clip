@@ -6,6 +6,7 @@ const OAuth2Data = require("./client_secret.json");
 const EventEmitter = require("events");
 
 const tags = require("./tags.json");
+const { setTimeout } = require("timers/promises");
 
 const rl = readline.createInterface({
   input: process.stdin,
@@ -136,10 +137,9 @@ class UploadVideo {
     console.log(`> ${Number(progress)}% completed`);
 
     if (progress === 100) {
-      fs.unlinkSync("/home/mateus/Videos/clips/output.mp4");
-
-      console.log("video deleted");
-      process.exit();
+      // fs.unlinkSync("/home/mateus/Videos/clips/output.mp4");
+      // console.log("video deleted");
+      // process.exit();
     }
   }
 }
