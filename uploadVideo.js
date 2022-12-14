@@ -47,8 +47,6 @@ class UploadVideo {
       client_id: this.clientId,
     });
 
-    console.log("Authorize this app by visiting this url: ", this.authUrl);
-
     fs.readFile(this.TOKEN_PATH, async (err, token) => {
       if (err) {
         this.getNewToken();
@@ -63,6 +61,8 @@ class UploadVideo {
     });
   }
   getNewToken() {
+    console.log("Authorize this app by visiting this url: ", this.authUrl);
+
     rl.question("Enter the code from that page here: ", async (codeTyped) => {
       try {
         await this.oAuth2Client.getToken(codeTyped, async (err, tokens) => {
@@ -109,7 +109,7 @@ class UploadVideo {
           tags: this.infoForVideo.tags,
         },
         status: {
-          privacyStatus: "private",
+          privacyStatus: "public",
         },
       },
       media: {

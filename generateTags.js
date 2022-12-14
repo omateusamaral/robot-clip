@@ -1,6 +1,8 @@
 const puppeteer = require("puppeteer");
-
 const fs = require("fs");
+const EventEmitter = require("events");
+const eventEmitter = new EventEmitter();
+
 async function init(title) {
   const browser = await puppeteer.launch({ headless: false });
   const page = await browser.newPage();

@@ -3,15 +3,12 @@ const fetch = require("node-fetch");
 const fs = require("fs");
 const DIR = "/home/mateus/Videos/clips";
 
-async function requestEnterUrl() {
+async function requestEnterUrl(clipUrl) {
   try {
-    const clipName = process.argv.at(-1);
-    const clipUrl = process.argv.at(-2);
-
     const response = await cliprxyz.downloadClip(clipUrl);
 
     const buffer = await fetchToBuffer(response.clipUrl);
-    save(clipName, buffer);
+    save(buffer);
   } catch (error) {
     console.log("error ", error);
   }
@@ -25,12 +22,12 @@ async function fetchToBuffer(clipUrl) {
     console.log("error in fetch to buffer", error);
   }
 }
-function save(clipName, buffer) {
+function save(buffer) {
   if (!fs.existsSync(DIR)) {
     fs.mkdirSync(DIR);
   }
-  fs.writeFile(`${DIR}/${clipName}.mp4`, buffer, () =>
-    console.log("finished downloading video!", `${DIR}/${clipName}.mp4`)
+  fs.writeFile(`${DIR}/output.mp4`, buffer, () =>
+    console.log("finished downloading video!", `${DIR}/output.mp4`)
   );
 }
-requestEnterUrl();
+module.exports = requestEnterUrl;

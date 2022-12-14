@@ -1,11 +1,21 @@
 const readline = require("readline");
 const express = require("express");
+const EventEmitter = require("events");
+
+const eventEmitter = new EventEmitter();
 const youtubeUploadVideo = require("./uploadVideo.js");
+const { setTimeout } = require("timers/promises");
 const robots = {
-  youtube: require("./uploadVideo.js"),
+  getClip: require("./getClip"),
   tags: require("./generateTags.js"),
 };
 const app = express();
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout,
+  terminal: false,
+});
+
 async function start() {
   app.listen(5000);
 
@@ -14,15 +24,26 @@ async function start() {
     res.send(code);
   });
 
-  // await robots.tags(`mercado futuro csgo`);
+  rl.question("what is the url clip?", (clipUrl) => {
+    rl.question("What is the clip name? ", async function (name) {
+      robots.getClip(clipUrl);
+      eventEmitter.emit("generateTagsEvent", name);
+    });
+  });
 
-  // rl.question("What is the clip name? ", async function (name) {
-  //   const canContinue = await robots.tags(name);
-  //   if (canContinue === true) {
-  //     const canClose = await robots.youtube();
-  //   }
-  // });
-  new youtubeUploadVideo("Mercado futuro csgo").init();
+  eventEmitter.on("generateTagsEvent", async (clipName) => {
+    const canContinue = await robots.tags(clipName);
+
+    if (canContinue) {
+      new youtubeUploadVideo(clipName).init();
+    }
+  });
+
+  rl.on("close", function () {
+    console.log("PROCESSING...");
+    rl.close();
+    process.exit();
+  });
 }
 
 start();
