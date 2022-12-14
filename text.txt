@@ -1,4 +1,7 @@
 SALVAR TITULO E TAGS EM UM JSON 
 
-AS TAGS PODEMOS UTILIZAR O PUPPETTER PARA IR NO SITE DE GERADOR DE TAGS BASEADO NO NOME DO TITULO QUE A A GENTE DA (https://rapidtags.io/generator)
+AS TAGS PODEMOS UTILIZAR O PUPPETTER PARA IR NO SITE DE GERADOR DE TAGS BASEADO NO NOME DO TITULO QUE A A GENTE DA (https://rapidtags.io/generator) ✅
+
+tentar implementar uma classe para uploadVideo ✅
+trabalhar com eventos no index.js
 
