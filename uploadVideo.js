@@ -134,12 +134,6 @@ class UploadVideo {
         100
     );
     console.log(`> ${Number(progress)}% completed`);
-
-    if (progress >= 100) {
-      // fs.unlinkSync("/home/mateus/Videos/clips/output.mp4");
-      // console.log("video deleted");
-      process.exit();
-    }
   }
 }
 
