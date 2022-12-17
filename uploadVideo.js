@@ -19,11 +19,11 @@ class UploadVideo {
       #paulinhooloko #modderdois #modderclips
 #paulinhooloko #modderdois #modderclips #gtarp #gtarpclips #luqueta #complexogtarp #valorant #valorantclips #valoranthighlights
 \n
-✅SE INSCREVA NO CANAL PARA RECEBER TODOS VÍDEOS!✅
+✅ SE INSCREVA NO CANAL PARA RECEBER TODOS VÍDEOS! ✅
 \n
 ✅ QUER ME AJUDAR COM UMA DOAÇÃO PARA CONTINUAR COM ESSE TRABALHO? FAÇA UMA DOAÇÃO \n
 ✅ PIX: 4b87746f-71ec-4e32-a81c-37974499ca42
-      `,
+`,
       tags: tags,
     };
     this.eventEmitter = new EventEmitter();
@@ -117,7 +117,7 @@ class UploadVideo {
           tags: this.infoForVideo.tags,
         },
         status: {
-          privacyStatus: "public",
+          privacyStatus: "private",
         },
       },
       media: {

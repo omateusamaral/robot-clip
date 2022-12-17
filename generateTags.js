@@ -21,7 +21,6 @@ async function init(title) {
     return options.map((option) => option.textContent);
   });
 
-  console.log(options);
   fs.writeFile("tags.json", JSON.stringify(options), "utf8", (err) => {
     if (err) throw err;
     console.log("generated tags json");
